@@ -1,0 +1,25 @@
+%!PS-Adobe-2.0
+%%Title: file c2.ps
+%%CreationDate: May 16 13:43:52 1995 
+%%Origin: [eg: 0 0]
+%%BoundingBox: 0 0 210 210
+%%EndComments
+%
+% trace de 2 segment d'epaisseur 4 unites 
+%
+/cm {72 mul 2.54 div} def
+%   epaisseur de trait
+0.15 cm  setlinewidth 
+
+newpath
+ 10 10 moveto 
+ 200 100 lineto
+ 10 200 lineto
+ closepath
+gsave
+0 0 1 setrgbcolor
+fill
+grestore
+0.7 setgray
+stroke
+showpage
