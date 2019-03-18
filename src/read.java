@@ -52,6 +52,45 @@ public class read {
         }
     }
 
+    public void lirefichierNeg(){
+        try {
+            InputStream flux = new FileInputStream(name);
+            InputStreamReader lecture = new InputStreamReader(flux);
+            BufferedReader buff = new BufferedReader(lecture);
+            String line;
+            File fneg= new File("neg_"+name);
+            fneg.createNewFile();
+            FileWriter fn = new FileWriter(fneg);
+            int j = 0;
+            int col = 0;
+            while ((line = buff.readLine()) != null){
+                if (j < 4){
+                    fn.write(line+"\n");
+                }
+                if (j >= 4){
+                    if (col == 0){
+                        fn.write(255- Integer.parseInt(line)+"\n");
+                    } else if (col == 1){
+                        fn.write(255- Integer.parseInt(line)+"\n");
+                    } else if (col == 2){
+                        fn.write(255- Integer.parseInt(line)+"\n");
+                    }
+                    col++;
+                    if (col == 3){
+                        col = 0;
+                    }
+                }
+                j++;
+            }
+            fn.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void lirefichier(){
         try {
             InputStream flux = new FileInputStream(name);
@@ -193,6 +232,7 @@ public class read {
         read test = new read(name);
     //    test.lirefichier();
     //    test.lirefichierGris();
-        test.cropImg();
+        test.lirefichierNeg();
+//        test.cropImg();
     }
 }
